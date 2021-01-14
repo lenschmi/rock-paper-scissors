@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+
+            const gameStateEnum = Object.freeze({"win":0, "lose":1, "tie":2, "invalid":3});
+
+            function computerPlay(){
+                let gameOptions = Array("Rock", "Paper", "Scissors");
+                return gameOptions[Math.floor(Math.random() * gameOptions.length)];
+            }
+
+            function playRockPaperScissors(playerSelection, computerSelection){
+                playerSelection = playerSelection.toLowerCase();
+                switch(playerSelection){
+                    case "rock":
+                        if (computerSelection == "Rock"){
+                            return gameStateEnum.tie;
+                        } else if(computerSelection == "Paper"){
+                            return gameStateEnum.lose;
+                        } else if(computerSelection == "Scissors"){
+                            return gameStateEnum.win;
+                        }
+                        break;
+                    case "paper":
+                        if (computerSelection == "Rock"){
+                            return gameStateEnum.win;
+                        } else if(computerSelection == "Paper"){
+                            return gameStateEnum.tie;
+                        } else if(computerSelection == "Scissors"){
+                            return gameStateEnum.lose;
+                        }
+                        break;
+                    case "scissors":
+                        if (computerSelection == "Rock"){
+                            return gameStateEnum.lose;
+                        } else if(computerSelection == "Paper"){
+                            return gameStateEnum.win;
+                        } else if(computerSelection == "Scissors"){
+                            return gameStateEnum.tie;
+                        }
+                        break;
+                    default:
+                        return gameStateEnum.invalid;
+                }
+
+            }
+
+            function game(){
+                let playerWin = 0;
+                let computerWin = 0;
+
+                //Play 5 rounds of Rock, Paper, Scissors
+                for(let i=0; i<5; i++){
+                    let computerSelection = computerPlay();
+                    let roundOutcome = gameStateEnum.invalid;
+                    let playerSelection;
+
+                    //Keep prompting the user until they enter a valid input
+                    while(roundOutcome == gameStateEnum.invalid){
+                        playerSelection = window.prompt("Rock, Paper, or Scissors?")
+                        if (playerSelection == null){
+                            console.log("Game ended by player.")
+                            return;
+                        }
+                        roundOutcome = playRockPaperScissors(playerSelection, computerSelection);
+                        if (roundOutcome == gameStateEnum.invalid) console.log("Invalid player selection. Please try again.")
+                    }
+
+                    //Convert the capitalization of playerSelection so that it matches that of computerSelection
+                    playerSelection = playerSelection.substr(0, 1).toUpperCase() + playerSelection.substring(1).toLowerCase();
+                    if (roundOutcome == gameStateEnum.win){
+                        console.log(`${playerSelection} beats ${computerSelection}! Player wins!`);
+                        playerWin++;
+                    } else if (roundOutcome == gameStateEnum.lose){
+                        console.log(`${computerSelection} beats ${playerSelection}! Computer wins!`);
+                        computerWin++;
+                    } else if (roundOutcome == gameStateEnum.tie){
+                        console.log(`${computerSelection} ties ${playerSelection}! Tie!`);
+                    }
+                }
+                
+                //Report game results
+                console.log(`Computer: ${computerWin}`);
+                console.log(`Player: ${playerWin}`);
+                console.log(`Ties ${5 - computerWin-playerWin}`);
+                if (playerWin > computerWin){
+                    console.log("Player wins!");
+                } else if (computerWin > playerWin){
+                    console.log("Computer wins!");
+                } else{
+                    console.log("Player ties Computer!")
+                }
+
+            }
+            
+        </script>
+    </body>
+</html>
