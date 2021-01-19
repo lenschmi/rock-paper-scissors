@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+body{
+    text-align: center;
+    font-family: Poppins;
+}
+
+header{
+    height: 150px;
+    font-size: 34px;
+    padding-bottom: 50px;
+}
+
+main{
+    font-size: 22px;
+}
+
+p{
+    margin: 0;
+}
+
+.rock-text{
+    color: #F5654D;
+}
+
+.paper-text{
+    color: #5FBDBC;
+}
+
+.scissors-text{
+    color: #F7BE3B;
+}
+
+button#rock{
+    background-image: url("images/rock-grey.jpg");
+    background-size: contain;
+}
+
+button#rock:hover{
+    background-image: url("images/rock.jpg");
+    background-size: contain;
+}
+
+button#rock:focus{
+    background-image: url("images/rock.jpg");
+    background-size: contain;
+    outline: none;
+}
+
+button#paper{
+    background-image: url("images/paper-grey.jpg");
+    background-size: contain;
+}
+
+button#paper:hover{
+    background-image: url("images/paper.jpg");
+    background-size: contain;
+}
+
+button#paper:focus{
+    background-image: url("images/paper.jpg");
+    background-size: contain;
+    outline: none;
+}
+
+button#scissors{
+    background-image: url("images/scissors-grey.jpg");
+    background-size: contain;
+}
+
+button#scissors:hover{
+    background-image: url("images/scissors.jpg");
+    background-size: contain;
+}
+
+button#scissors:focus{
+    background-image: url("images/scissors.jpg");
+    background-size: contain;
+    outline: none;
+}
+
+#rps-buttons{
+    max-width: 600px;
+    min-width:430px;
+    padding: 20px 0 20px 0;
+    border-style: solid;
+    border-color: black;
+    margin: 30px auto 0 auto;
+}
+
+.game-buttons{
+    padding: 60px;
+    margin: 0 10px 0 10px;
+    border-style: none;
+}
+
+#results{
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    min-width:430px;
+    border-style: solid;
+    border-color: black;
+    margin: 30px auto 0 auto;
+}
+
+#comp-choice{
+    width: 120px;
+    padding: 10px;
+    border-right-style: solid;
+    border-right-color: black;
+}
+
+#comp-image{
+    width: 120px;
+    height: 120px;
+    background-image: url("images/blank.jpg");
+    background-size: contain;
+}
+
+#round-scores{
+    padding: 10px;
+    text-align: left;
+}
+
+#game-result{
+    margin: 30px auto 30px auto;
+    font-family: 30px;
+}
+
+#new-game{
+    font-size: 30px;
+    padding: 15px;
+    background-color: #F5654D;
+    border-style: solid;
+    border-color: black;
+    border-radius: 6px;
+    visibility: hidden;
+}
+
+#new-game:hover{
+    transition: transform 0.5s;
+    transform: scale(1.05) perspective(1px);
+}
+
+button{
+    cursor: pointer;
+}
